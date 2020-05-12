@@ -34,6 +34,9 @@ app.get('/itinerary*', function(req, res) {
   })*/
 });
 
+// https://stackoverflow.com/questions/10435407/proxy-with-express-js
+// https://www.youtube.com/watch?v=1xo-0gCVhTU
+
 const proxyport = 5000;
 
 app.listen(proxyport);
