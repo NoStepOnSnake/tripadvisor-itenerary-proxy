@@ -2,5 +2,7 @@
 /itinerary/
 /node_modules/
 /reviews/
-/travelers/
+/calendar/
+/dist/
+/lib/
 package-lock.json
