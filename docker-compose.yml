@@ -1,0 +1,38 @@
+version: '3'
+services:
+  web:
+    build: '.web'
+    ports:
+      - "80:80"
+
+  itinerary:
+    build: './itinerary'
+    ports:
+      - "3000:3000"
+    depends_on:
+      - itinerarydb  
+    environment:
+      - PORT=3000
+      - SQLPORT=5432
+      - POSTGRES_DB=snaketours
+      - SQLUSER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - SQLHOST=itinerarydb
+  itinerarydb:
+    build: './itinerary/src/server/database'
+    ports:
+      - "5432:5432"
+
+
+#  nginx:
+#    image: nginx:latest
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./web/public:/srv/www/static
+#      - .default.conf:/etc/nginx/conf.d/default.conf
+      # volumes is a way to connect your host machine's file system to the file system of the container
+      # e.g. "hey, go connect the web module (./web/public)  to the container's server/www/static?"
+#    depends_on:
+#      - web
+
